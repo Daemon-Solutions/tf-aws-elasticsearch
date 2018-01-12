@@ -6,7 +6,13 @@ variable "es_domain_envname" {
 variable "es_version" {
   description = "The version of ElasticSearch to deploy"
   type = "string"
-  default = "1.5"
+  default = "6.0"
+}
+
+variable "es_access_policy" {
+  description = "IAM policy document specifying the access policies for the domain"
+  type = "string"
+  default = ""
 }
 
 variable "es_ebs_size" {
@@ -46,9 +52,15 @@ variable "es_master_instance_count" {
 }
 
 variable "es_zone_awareness" {
-  description = "Bit indicating whether zone awareness is enabled"
+  description = "Bool indicating whether zone awareness is enabled"
   type = "string"
-  default = 1
+  default = "false"
+}
+
+variable "es_automated_snapshot_start_hour" {
+  description = "Hour during which the service takes an automated daily snapshot of all indices"
+  type = "string"
+  default = "01"
 }
 
 variable "aws_region" {

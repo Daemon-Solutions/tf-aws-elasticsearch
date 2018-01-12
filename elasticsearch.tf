@@ -2,10 +2,10 @@ resource "aws_elasticsearch_domain" "es-domain" {
   domain_name           = "${var.es_domain_envname}"
   elasticsearch_version = "${var.es_version}"
 
-  access_policies = "${data.aws_iam_policy_document.elasticsearch.json}"
+  access_policies = "${var.es_access_policy != "" ? var.es_access_policy : data.aws_iam_policy_document.elasticsearch.json}"
 
   snapshot_options {
-    automated_snapshot_start_hour = 01
+    automated_snapshot_start_hour = "${var.es_automated_snapshot_start_hour}"
   }
 
   ebs_options {
@@ -37,7 +37,7 @@ data "aws_iam_policy_document" "elasticsearch" {
     ]
 
     resources = [
-      "arn:aws:es:${var.aws_region == "eu-west-2" ? "eu-central-1" : var.aws_region}:${data.aws_caller_identity.current.account_id}:domain/${var.es_domain_envname}/*",
+      "arn:aws:es:${var.aws_region}:${data.aws_caller_identity.current.account_id}:domain/${var.es_domain_envname}/*",
     ]
   }
 }
