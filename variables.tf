@@ -9,6 +9,12 @@ variable "es_version" {
   default = "1.5"
 }
 
+variable "es_access_policy" {
+  description = "IAM policy document specifying the access policies for the domain"
+  type = "string"
+  default = ""
+}
+
 variable "es_ebs_size" {
   description = "The size (GB) of EBS volumes attached to data nodes"
   type = "string"
