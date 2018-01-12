@@ -52,9 +52,15 @@ variable "es_master_instance_count" {
 }
 
 variable "es_zone_awareness" {
-  description = "Bit indicating whether zone awareness is enabled"
+  description = "Bool indicating whether zone awareness is enabled"
   type = "string"
-  default = 1
+  default = "false"
+}
+
+variable "es_automated_snapshot_start_hour" {
+  description = "Hour during which the service takes an automated daily snapshot of all indices"
+  type = "string"
+  default = "01"
 }
 
 variable "aws_region" {

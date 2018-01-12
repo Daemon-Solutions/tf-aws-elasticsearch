@@ -5,7 +5,7 @@ resource "aws_elasticsearch_domain" "es-domain" {
   access_policies = "${var.es_access_policy != "" ? var.es_access_policy : data.aws_iam_policy_document.elasticsearch.json}"
 
   snapshot_options {
-    automated_snapshot_start_hour = 01
+    automated_snapshot_start_hour = "${var.es_automated_snapshot_start_hour}"
   }
 
   ebs_options {
