@@ -6,7 +6,7 @@ variable "es_domain_envname" {
 variable "es_version" {
   description = "The version of ElasticSearch to deploy"
   type = "string"
-  default = "1.5"
+  default = "6.0"
 }
 
 variable "es_access_policy" {
