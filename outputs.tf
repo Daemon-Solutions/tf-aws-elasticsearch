@@ -9,3 +9,7 @@ output "domain_id" {
 output "arn" {
   value = "${aws_elasticsearch_domain.es-domain.arn}"
 }
+
+output "kibana_endpoint" {
+  value = "${aws_elasticsearch_domain.es-domain.kibana_endpoint}"
+}
