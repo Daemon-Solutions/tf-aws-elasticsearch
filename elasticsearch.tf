@@ -23,6 +23,11 @@ resource "aws_elasticsearch_domain" "es-domain" {
     zone_awareness_enabled   = "${var.es_zone_awareness}"
   }
 
+  encrypt_at_rest {
+    enabled    = "${var.es_encrypt_at_rest_enabled}"
+    kms_key_id = "${var.es_encrypt_at_rest_kms_key_id}"
+  }
+
   tags {
     Environment = "${var.es_domain_envname}"
   }

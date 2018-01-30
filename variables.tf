@@ -63,6 +63,18 @@ variable "es_automated_snapshot_start_hour" {
   default = "01"
 }
 
+variable "es_encrypt_at_rest_enabled" {
+  description = "Whether to enable encryption at rest"
+  type = "string"
+  default = false
+}
+
+variable "es_encrypt_at_rest_kms_key_id" {
+  description = "The KMS key ID to use to encrypt Elasticsearch data at rest.  Defaults to aws/es service KMS key"
+  type = "string"
+  default = ""
+}
+
 variable "aws_region" {
   description = "The AWS region in which to deploy resources"
   type = "string"

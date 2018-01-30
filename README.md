@@ -15,7 +15,7 @@ module "testES" {
   es_dedicated_master = "false"
   es_master_instance_type = "t2.small.elasticsearch"
   es_master_instance_count = "2"
-  es_zone_awareness = "false"           
+  es_zone_awareness = "false"
   aws_region = "eu-west-1"
 }
 ```
@@ -33,6 +33,8 @@ es_master_instance_type - Master instance size (Defaults to t2.micro.elasticsear
 es_master_instance_count - Master instance count (Defaults to 1)
 es_zone_awareness - Multi-AZ (if true instance count must be even)
 es_automatic_snapshot_start_hour - What time to allow automatic snapshots to be taken (defaults to 01)
+es_encrypt_at_rest_enabled - Whether to enable encryption at rest (Defaults to false.  Note that encryption at rest is not available for all instance types.  See the [AWS ElasticSearch Service documentation](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html) for further details)
+es_encrypt_at_rest_kms_key_id - ID of a key to use for encryption at rest (Defaults to empty (which uses the default aws/es service key))
 aws_region - Region to deploy (Defaults to eu-west-1)
 ```
 
@@ -46,3 +48,5 @@ domain_id - ES doamin ID
 
 ## Breaking changes
 Version 1.0.0 no longer sets the aws_region in the default policy to `eu-central-1` if `aws_region` is set to `eu-west-2` and will instead use the value you supplied in `aws_region`.
+
+Version 1.1.0 requires verion 1.8 of the Terraform AWS provider or higher.
