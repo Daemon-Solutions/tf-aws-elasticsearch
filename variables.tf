@@ -80,3 +80,13 @@ variable "aws_region" {
   type = "string"
   default = "eu-west-1"
 }
+
+variable "sg_ids" {
+  description = "Security group ids to attach to the ENIs"
+  default = []
+}
+
+variable "subnet_ids" {
+  description = "Subnets to put ENIs in"
+  default = []
+}

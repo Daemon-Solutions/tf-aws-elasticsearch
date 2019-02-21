@@ -28,6 +28,11 @@ resource "aws_elasticsearch_domain" "es-domain" {
     kms_key_id = "${var.es_encrypt_at_rest_kms_key_id}"
   }
 
+  vpc_options {
+    security_group_ids = ["${var.sg_ids}"]
+    subnet_ids         = ["${var.subnet_ids}"]
+  }
+
   tags {
     Environment = "${var.es_domain_envname}"
   }
